@@ -78,4 +78,9 @@ function respond (event, context, status, data) {
     },
     json: true
   })
+  .then(() => console.log('Response sent'))
+  .catch(function (err) {
+    console.log('Failed to send response')
+    console.log(err)
+  })
 }
