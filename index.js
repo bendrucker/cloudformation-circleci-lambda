@@ -74,7 +74,7 @@ function respond (event, context, status, data) {
       Data: data
     }),
     headers: {
-      'content-type': 'application/json'
+      'content-type': ''
     },
     json: true
   })
