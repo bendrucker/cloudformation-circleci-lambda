@@ -1,7 +1,7 @@
 'use strict'
 
 const circle = require('circleci-aws')
-const partial = require('ap')
+const partial = require('ap').partial
 const got = require('got')
 
 module.exports = Handler
