@@ -14,12 +14,16 @@ $ npm install --save cloudformation-circleci-lambda
 ```js
 var CircleHandler = require('cloudformation-circleci-lambda')
 
-exports.handler = CircleHandler(function getToken () {
-  return Promise.resolve('my-token')
-})
+exports.handler = function handler (event, context, callback) {
+  CircleHandler(function getToken () {
+    return Promise.resolve('my-token')
+  })
+  .then(() => callback(null))
+  .catch((err) => callback(err))
+}
 ```
 
-The returned handler receives event data from CloudFormation and installs keys on CircleCI.
+The returned handler receives event data from CloudFormation and installs keys on CircleCI. You are responsible for calling the handler's callback and triggering the completion of the Lambda execution. This allows you to chain other handlers into the same run.
 
 
 ## License

@@ -52,12 +52,10 @@ function prepare (token, event) {
 
 function success (event, context) {
   return respond(event, context, 'SUCCESS', {})
-    .then(() => context.done())
 }
 
 function fail (event, context, err) {
   return respond(event, context, 'FAILED', {
     Error: err.message
   })
-  .then(() => context.done())
 }
