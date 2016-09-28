@@ -29,6 +29,6 @@
   "dependencies": {
     "ap": "~0.2.0",
     "circleci-aws": "~1.0.0",
-    "got": "~6.5.0"
+    "lambda-cloudformation-response": "~1.0.0"
   }
 }

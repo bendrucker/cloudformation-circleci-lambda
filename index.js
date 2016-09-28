@@ -2,7 +2,7 @@
 
 const circle = require('circleci-aws')
 const partial = require('ap').partial
-const got = require('got')
+const respond = require('lambda-cloudformation-response')
 
 module.exports = Handler
 
@@ -60,27 +60,4 @@ function fail (event, context, err) {
     Error: err.message
   })
   .then(() => context.done())
-}
-
-function respond (event, context, status, data) {
-  return got.put(event.ResponseURL, {
-    body: JSON.stringify({
-      Status: status,
-      Reason: 'CloudWatch: ' + context.logStreamName,
-      PhysicalResourceId: context.logStreamName,
-      StackId: event.StackId,
-      RequestId: event.RequestId,
-      LogicalResourceId: event.LogicalResourceId,
-      Data: data
-    }),
-    headers: {
-      'content-type': ''
-    },
-    json: true
-  })
-  .then(() => console.log('Response sent'))
-  .catch(function (err) {
-    console.log('Failed to send response')
-    console.log(err)
-  })
 }
