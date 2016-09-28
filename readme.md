@@ -1,7 +1,6 @@
 # cloudformation-circleci-lambda [![Build Status](https://travis-ci.org/bendrucker/cloudformation-circleci-lambda.svg?branch=master)](https://travis-ci.org/bendrucker/cloudformation-circleci-lambda)
 
-> AWS Lambda handler for managing CircleCI AWS credentials
-
+> AWS Lambda handler for configuring CircleCI to deploy to Eaze's infrastructure in AWS
 
 ## Install
 
