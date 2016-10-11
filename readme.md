@@ -14,12 +14,14 @@ $ npm install --save cloudformation-circleci-lambda
 ```js
 var CircleHandler = require('cloudformation-circleci-lambda')
 
+const credentialsHandler = CircleHandler(function getToken () {
+  return Promise.resolve('my-token')
+})
+
 exports.handler = function handler (event, context, callback) {
-  CircleHandler(function getToken () {
-    return Promise.resolve('my-token')
-  })
-  .then(() => callback(null))
-  .catch((err) => callback(err))
+  credentialsHandler(event, context)
+    .then(() => callback(null))
+    .catch((err) => callback(err))
 }
 ```
 
